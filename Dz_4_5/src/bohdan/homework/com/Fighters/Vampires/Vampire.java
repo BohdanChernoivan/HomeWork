@@ -13,9 +13,14 @@ public class Vampire extends ArenaFighter implements ActionPreFight {
 
     @Override
     public void actionWithFight(ArenaFighter arenaFighter) {
-        if (getHealth() <= getFullHP() - getDamage()) {
-            setHealth(getDamage());
-            setDamage(getDamage() / 2);
+
+        int myDamage = arenaFighter.getHealth() - arenaFighter.takeDamage(getDamage());
+        setHealth(myDamage);
+        setDamage(myDamage / 2);
+
+
+        if (getHealth() > getFullHP()) {
+            setRegenHealth(getFullHP());
         }
     }
 }
