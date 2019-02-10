@@ -11,8 +11,12 @@ public class DarkKnight extends Knight implements ActionPreFight {
 
     @Override
     public void actionWithFight(ArenaFighter arenaFighter) {
-        if (getHealth() <= getFullHP() - getDamage()) {
-            setHealth(getDamage());
+
+        int myDamage = arenaFighter.getHealth() - arenaFighter.takeDamage(getDamage());
+        setHealth(myDamage);
+
+        if (getHealth() > getFullHP()) {
+            setRegenHealth(getFullHP());
         }
     }
 }
