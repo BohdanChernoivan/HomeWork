@@ -1,23 +1,26 @@
 package bohdan.homework.com.Fighters.Vampires;
 
 import bohdan.homework.com.Fighters.Base.Abilities.ElementalFighter;
+import bohdan.homework.com.Fighters.Base.Actions.ReturnMyDamage;
 import bohdan.homework.com.Fighters.Base.Actions.ActionPreFight;
 import bohdan.homework.com.Fighters.Base.ArenaFighter;
 
 import java.util.Random;
 
-public class TopVampire extends Vampire implements ActionPreFight, ElementalFighter {
+public class TopVampire extends Vampire implements ActionPreFight, ElementalFighter, ReturnMyDamage {
 
-    Random random = new Random();
+    Random random;
 
-    public int getRandomElement() {
+    private int getRandomElement() {
         int randomElement = random.nextInt(elements.length);
         return elements[randomElement];
+
         }
 
     public TopVampire(String name, int health, int damage, double defense) {
         super(name, health, damage, defense);
         getElement();
+        random = new Random();
     }
 
     @Override
@@ -30,11 +33,13 @@ public class TopVampire extends Vampire implements ActionPreFight, ElementalFigh
     @Override
     public void actionWithFight(ArenaFighter arenaFighter) {
 
-        if (getHealth() <= getFullHP() - getDamage()) {
-            setHealth(getDamage());
-            setDamage(getDamage() / 2);
-        }
+        int thisFighterDamage = getDamageVampirism(this,arenaFighter);
+
+        setHealth(thisFighterDamage);
+        setDamage(thisFighterDamage / 2);
+
         arenaFighter.takeDamage(getDamage() * bonusDamage(arenaFighter));
+
         switch (getElement()) {
             case 1:
                 System.out.println(getName() + " get fire." );
@@ -51,9 +56,8 @@ public class TopVampire extends Vampire implements ActionPreFight, ElementalFigh
         }
     }
 
-    int bonusDamage(ArenaFighter arenaFighter) {
-        int bonus = getСomparisonElementEnemy(arenaFighter instanceof ElementalFighter ? (((ElementalFighter)arenaFighter).getElement()) : 1);
-        return bonus;
+    private int bonusDamage(ArenaFighter arenaFighter) {
+        return getСomparisonElementEnemy(arenaFighter instanceof ElementalFighter ? (((ElementalFighter)arenaFighter).getElement()) : 1);
     }
 
 
