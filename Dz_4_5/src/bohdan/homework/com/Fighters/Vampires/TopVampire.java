@@ -9,18 +9,16 @@ import java.util.Random;
 
 public class TopVampire extends Vampire implements ActionPreFight, ElementalFighter, ReturnMyDamage {
 
-    Random random;
+    Random random = new Random();
 
     private int getRandomElement() {
-        int randomElement = random.nextInt(elements.length);
-        return elements[randomElement];
+        return elements[random.nextInt(elements.length)];
 
         }
 
     public TopVampire(String name, int health, int damage, double defense) {
         super(name, health, damage, defense);
         getElement();
-        random = new Random();
     }
 
     @Override
