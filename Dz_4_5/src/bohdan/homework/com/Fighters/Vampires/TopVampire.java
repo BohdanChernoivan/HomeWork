@@ -31,12 +31,17 @@ public class TopVampire extends Vampire implements ActionPreFight, ElementalFigh
     @Override
     public void actionWithFight(ArenaFighter arenaFighter) {
 
-        int thisFighterDamage = getDamageVampirism(this,arenaFighter);
 
-        setHealth(thisFighterDamage);
-        setDamage(thisFighterDamage / 2);
+            int thisFighterDamage = getDamageVampirism(this,arenaFighter);
+        try {
+            setHealth(thisFighterDamage);
+            setDamage(thisFighterDamage / 2);
 
-        arenaFighter.takeDamage(getDamage() * bonusDamage(arenaFighter));
+            arenaFighter.takeDamage(getDamage() * bonusDamage(arenaFighter));
+        } catch (ArithmeticException e) {
+            System.out.println("Division by zero");
+        }
+
 
         switch (getElement()) {
             case 1:

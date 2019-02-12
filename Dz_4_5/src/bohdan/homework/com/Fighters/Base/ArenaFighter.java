@@ -35,11 +35,17 @@ public abstract class ArenaFighter {
         return health;
     }
 
-    public int setHealth(int health) {
+    protected int setHealth(int health) {
         return this.health += health;
     }
 
-    public int setRegenHealth(int health) { return this.health = health; }
+    public int setRegenHealth(int health) {
+        try {
+            return this.health = health;
+        } catch (RuntimeException e) {
+            return getFullHP();
+        }
+    }
 
     public int getDamage() {
         return damage;
@@ -54,7 +60,11 @@ public abstract class ArenaFighter {
     }
 
     public int setReturnDamage(int damage) {
-        return this.damage = damage;
+        try {
+            return this.damage = damage;
+        } catch (RuntimeException e) {
+            return getFullDamage();
+        }
     }
 
     public int getFullHP() {

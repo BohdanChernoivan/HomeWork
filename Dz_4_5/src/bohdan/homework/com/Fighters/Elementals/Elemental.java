@@ -6,7 +6,7 @@ import bohdan.homework.com.Fighters.Base.ArenaFighter;
 
 public class Elemental extends ArenaFighter implements ActionPreFight, ElementalFighter {
 
-    int element;
+    private int element;
 
     public Elemental(String name, int health, int damage, double defense, int element) {
         super(name, health, damage, defense);
@@ -15,9 +15,14 @@ public class Elemental extends ArenaFighter implements ActionPreFight, Elemental
 
     @Override
     public void actionWithFight(ArenaFighter arenaFighter) {
-        if (arenaFighter instanceof ElementalFighter ? getCoincideElement(((ElementalFighter)arenaFighter).getElement()) : false) {
-            takeDamage(arenaFighter.getDamage() / 2);
-            if(getHealth() <= getFullHP() - (getDamage() * 2)) {
+        if (arenaFighter instanceof ElementalFighter ? getCoincideElement(((ElementalFighter) arenaFighter).getElement()) : false) {
+            try {
+                takeDamage(arenaFighter.getDamage() / 2);
+            } catch (ArithmeticException e) {
+                System.out.println("Division by zero");
+            }
+
+            if (getHealth() <= getFullHP() - (getDamage() * 2)) {
                 setHealth(getDamage() * 2);
             }
         }
@@ -29,7 +34,7 @@ public class Elemental extends ArenaFighter implements ActionPreFight, Elemental
         boolean count;
         for (int x : elements) {
             count = (defaultElement & x) > 0 ? true : false;
-            if(count == true) return true;
+            if(count) return true;
         }
         return false;
     }

@@ -11,15 +11,16 @@ public class Vampire extends ArenaFighter implements ActionPreFight, ReturnMyDam
     }
 
 
-
     @Override
     public void actionWithFight(ArenaFighter arenaFighter) {
 
-        int thisFighterDamage = getDamageVampirism(this,arenaFighter);
-
-        setHealth(thisFighterDamage);
-        setDamage(thisFighterDamage / 2);
-
+        int thisFighterDamage = getDamageVampirism(this, arenaFighter);
+        try {
+            setHealth(thisFighterDamage);
+            setDamage(thisFighterDamage / 2);
+        } catch (ArithmeticException e) {
+            System.out.println("Division by zero");
+        }
 
         if (getHealth() > getFullHP()) {
             setRegenHealth(getFullHP());

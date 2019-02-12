@@ -18,9 +18,13 @@ public class DragonRider extends ArenaFighter implements FightBreakAction {
     @Override
     public void actionWithFight(ArenaFighter arenaFighter, FightCallBack fightCallBack) {
         if (arenaFighter instanceof Dragon) {
+            try {
             dragonPet = (Dragon) arenaFighter;
             setDamage(dragonPet.getDamage());
-            fightCallBack.fightImmediatelyDone(this);
+                fightCallBack.fightImmediatelyDone(this);
+            } catch (Exception e) {
+                System.out.println("Dragon Pet don't find");
+            }
         }
     }
 
