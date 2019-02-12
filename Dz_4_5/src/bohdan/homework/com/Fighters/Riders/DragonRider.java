@@ -24,10 +24,10 @@ public class DragonRider extends ArenaFighter implements FightBreakAction {
         }
     }
 
-    @Override
-    public int setReturnDamage(int damage) {
-        return super.setReturnDamage(damage + dragonPet.getFullDamage());
-    }
+//    @Override
+//    public int setReturnDamage(int damage) {
+//        return super.setReturnDamage(damage + dragonPet.getFullDamage());
+//    }
 }
 
 
