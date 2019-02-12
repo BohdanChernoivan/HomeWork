@@ -6,11 +6,12 @@ public interface ReturnMyDamage {
 
     /**
      *
-     * @param arenaFighter  Our Fighter
+     * @param arenaFighterOur  Our Fighter
      * @param arenaFighterEnemy  Enemy Fighter
      * @return damage our fighter
      */
-    default int getDamageVampirism(ArenaFighter arenaFighter, ArenaFighter arenaFighterEnemy) {
-        return arenaFighterEnemy.getHealth() - arenaFighterEnemy.takeDamage(arenaFighter.getDamage());
+    default int getDamageVampirism(ArenaFighter arenaFighterOur, ArenaFighter arenaFighterEnemy) {
+        return arenaFighterOur.getDamage() - (arenaFighterOur.getDamage() * (int)arenaFighterEnemy.getDefense());
+
     }
 }
