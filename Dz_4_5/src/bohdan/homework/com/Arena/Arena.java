@@ -8,69 +8,73 @@ import bohdan.homework.com.Fighters.Base.ArenaFighter;
 public class Arena {
 
 
-    public ArenaFighter fight(ArenaFighter arenaFighterOne, ArenaFighter arenaFighterTwo) { //TODO: does't correctly work
+    public ArenaFighter fight(ArenaFighter arenaFighterOne, ArenaFighter arenaFighterTwo) {
+
         int round = 1;
+        int takeDamageOneFighter = arenaFighterTwo.takeDamage(arenaFighterOne.getDamage()); //deals damage
+        int takeDamageTwoFighter = arenaFighterOne.takeDamage(arenaFighterTwo.getDamage()); //deals damage
 
         final ArenaFighter[] winner = {null};
-        do {
-            preRoundActions(arenaFighterOne,arenaFighterTwo, (winner1) -> winner[0] = winner1);
-            if(winner[0] != null) return winner[0];
-            preRoundActions(arenaFighterTwo, arenaFighterOne, (winner1) -> winner[0] = winner1);
-            if(winner[0] != null) return winner[0];
+        try {
+            do {
+                preRoundActions(arenaFighterOne, arenaFighterTwo, (winner1) -> winner[0] = winner1);
+                if (winner[0] != null) break;
+                preRoundActions(arenaFighterTwo, arenaFighterOne, (winner1) -> winner[0] = winner1);
+                if (winner[0] != null) break;
 
-            int takeDamageOne = arenaFighterTwo.takeDamage(arenaFighterOne.getDamage());
-            int takeDamageTwo = arenaFighterOne.takeDamage(arenaFighterTwo.getDamage());
+                postRoundActions(arenaFighterOne, arenaFighterTwo, takeDamageTwoFighter);
+                postRoundActions(arenaFighterTwo, arenaFighterOne, takeDamageOneFighter);
 
-            postRoundActions(arenaFighterOne,arenaFighterTwo,takeDamageTwo );
-            postRoundActions(arenaFighterTwo,arenaFighterOne, takeDamageOne);
+                if (arenaFighterOne.isAlive() && arenaFighterTwo.isAlive())
+                    round++;
 
-            if (arenaFighterOne.isAlive() && arenaFighterTwo.isAlive())
-                round++;
+                else if (arenaFighterOne.isAlive()) {
+                    System.out.println("Rounds passed = " + round);
+                    System.out.println("Winner = " + arenaFighterOne.getName() + "; Left health point = " + arenaFighterOne.getHealth());
+                    arenaFighterOne.setRegenHealth(arenaFighterOne.getFullHP());
+                    arenaFighterOne.setReturnDamage(arenaFighterOne.getFullDamage());
+                    return arenaFighterOne;
+                } else if (arenaFighterTwo.isAlive()) {
+                    System.out.println("Rounds passed = " + round);
+                    System.out.println("Winner = " + arenaFighterTwo.getName() + "; Left health point = " + arenaFighterTwo.getHealth());
+                    arenaFighterTwo.setRegenHealth(arenaFighterTwo.getFullHP());
+                    arenaFighterTwo.setReturnDamage(arenaFighterTwo.getFullDamage());
+                    return arenaFighterTwo;
+                }
 
-            else if (arenaFighterOne.isAlive()) {
-                System.out.println("Rounds passed = " + round);
+            } while (round < 11);
+        } catch (NullPointerException error) {
+            System.out.println("There is no winner " + error);
+        }
+
+            if (arenaFighterOne.getHealth() > arenaFighterTwo.getHealth()) {
+                System.out.println("Early win!");
                 System.out.println("Winner = " + arenaFighterOne.getName() + "; Left health point = " + arenaFighterOne.getHealth());
                 arenaFighterOne.setRegenHealth(arenaFighterOne.getFullHP());
                 arenaFighterOne.setReturnDamage(arenaFighterOne.getFullDamage());
                 return arenaFighterOne;
-            }
-            else if (arenaFighterTwo.isAlive()) {
-                System.out.println("Rounds passed = " + round);
+            } else if (arenaFighterTwo.getHealth() > arenaFighterOne.getHealth()) {
+                System.out.println("Early win!");
                 System.out.println("Winner = " + arenaFighterTwo.getName() + "; Left health point = " + arenaFighterTwo.getHealth());
                 arenaFighterTwo.setRegenHealth(arenaFighterTwo.getFullHP());
                 arenaFighterTwo.setReturnDamage(arenaFighterTwo.getFullDamage());
                 return arenaFighterTwo;
-            }
-            else return null;
-
-        } while (round < 11);
-
-    return arenaFighterOne; // rewrite!!!
+            } else if (winner[0] != null) {
+                return winner[0];
+            } else return null;
     }
-    public void preRoundActions (ArenaFighter arenaFighterOne, ArenaFighter arenaFighterTwo, FightBreakAction.FightCallBack callBack) {
+
+
+    private void preRoundActions (ArenaFighter arenaFighterOne, ArenaFighter arenaFighterTwo, FightBreakAction.FightCallBack callBack) {
         if(arenaFighterOne instanceof ActionPreFight)
             ((ActionPreFight) arenaFighterOne).actionWithFight(arenaFighterTwo);
         if(arenaFighterOne instanceof FightBreakAction)
             ((FightBreakAction) arenaFighterOne).actionWithFight(arenaFighterTwo, callBack);
     }
 
-    public void postRoundActions (ArenaFighter arenaFighterOne, ArenaFighter arenaFighterTwo, int damageTakeByArenaFightTwo) {
+    private void postRoundActions (ArenaFighter arenaFighterOne, ArenaFighter arenaFighterTwo, int damageTakeByArenaFightTwo) {
         if (arenaFighterOne instanceof ActionPostFight)
             ((ActionPostFight) arenaFighterOne).action(arenaFighterTwo,damageTakeByArenaFightTwo);
     }
 
 }
-
-/*
-
-
-
-  System.out.println("Fight is over");
-
-        if (arenaFighterOne.isAlive()) {
-            System.out.println(arenaFighterOne.getName() + " won");
-        } else if (arenaFighterTwo.isAlive()) {
-            System.out.println(arenaFighterTwo.getName() + " won");
-        } else
-            System.out.println("Both are dead.");
-            */
