@@ -21,6 +21,6 @@ public class Knight extends ArenaFighter {
     public int takeDamage(int damage) {
         if (Math.random() > getShield())
             return super.takeDamage(damage);
-        else return super.takeDamage(damage);
+        else return 0;
     }
 }
