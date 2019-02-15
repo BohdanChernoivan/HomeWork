@@ -1,6 +1,6 @@
-package bohdan.homework.com.Fighters.Base.Actions;
+package bohdan.homework.com.fighters.base.actions;
 
-import bohdan.homework.com.Fighters.Base.ArenaFighter;
+import bohdan.homework.com.fighters.base.ArenaFighter;
 
 public interface ReturnMyDamage {
 
@@ -11,7 +11,7 @@ public interface ReturnMyDamage {
      * @return damage our fighter
      */
     default int getDamageVampirism(ArenaFighter arenaFighterOur, ArenaFighter arenaFighterEnemy) {
-        return arenaFighterOur.getDamage() - (arenaFighterOur.getDamage() * (int)arenaFighterEnemy.getDefense());
+        return arenaFighterEnemy.getHealth() - arenaFighterEnemy.takeDamage(arenaFighterOur.getDamage());
 
     }
 }

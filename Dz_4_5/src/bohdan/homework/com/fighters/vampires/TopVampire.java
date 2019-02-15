@@ -1,9 +1,9 @@
-package bohdan.homework.com.Fighters.Vampires;
+package bohdan.homework.com.fighters.vampires;
 
-import bohdan.homework.com.Fighters.Base.Abilities.ElementalFighter;
-import bohdan.homework.com.Fighters.Base.Actions.ReturnMyDamage;
-import bohdan.homework.com.Fighters.Base.Actions.ActionPreFight;
-import bohdan.homework.com.Fighters.Base.ArenaFighter;
+import bohdan.homework.com.fighters.base.abilities.ElementalFighter;
+import bohdan.homework.com.fighters.base.actions.ReturnMyDamage;
+import bohdan.homework.com.fighters.base.actions.ActionPreFight;
+import bohdan.homework.com.fighters.base.ArenaFighter;
 
 import java.util.Random;
 
@@ -18,7 +18,6 @@ public class TopVampire extends Vampire implements ActionPreFight, ElementalFigh
 
     public TopVampire(String name, int health, int damage, double defense) {
         super(name, health, damage, defense);
-        getElement();
     }
 
     @Override

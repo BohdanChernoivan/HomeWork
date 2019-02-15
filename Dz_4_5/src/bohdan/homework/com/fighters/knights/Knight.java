@@ -1,6 +1,6 @@
-package bohdan.homework.com.Fighters.Knights;
+package bohdan.homework.com.fighters.knights;
 
-import bohdan.homework.com.Fighters.Base.ArenaFighter;
+import bohdan.homework.com.fighters.base.ArenaFighter;
 
 public class Knight extends ArenaFighter {
 

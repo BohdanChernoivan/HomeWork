@@ -1,7 +1,7 @@
-package bohdan.homework.com.Fighters.Knights;
+package bohdan.homework.com.fighters.knights;
 
-import bohdan.homework.com.Fighters.Base.Actions.ActionPreFight;
-import bohdan.homework.com.Fighters.Base.ArenaFighter;
+import bohdan.homework.com.fighters.base.actions.ActionPreFight;
+import bohdan.homework.com.fighters.base.ArenaFighter;
 
 public class HolyKnight extends Knight implements ActionPreFight {
 
