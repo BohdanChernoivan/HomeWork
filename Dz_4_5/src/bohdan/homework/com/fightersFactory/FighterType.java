@@ -1,5 +1,5 @@
 package bohdan.homework.com.fightersFactory;
 
-public enum FigherTipe {
+public enum FighterType {
     Dragon, Knight, DragonRider,Vampire, Elemental, Random
 }

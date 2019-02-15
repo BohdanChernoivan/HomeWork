@@ -2,22 +2,25 @@ package bohdan.homework.com.fightersFactory.knightsCaslte;
 
 import bohdan.homework.com.fighters.knights.HolyKnight;
 import bohdan.homework.com.fighters.knights.Knight;
+import bohdan.homework.com.fightersFactory.randomСharacteristics.YourArmor;
+import bohdan.homework.com.fightersFactory.randomСharacteristics.YourDamage;
+import bohdan.homework.com.fightersFactory.randomСharacteristics.YourHealth;
 
-public class HollyCastle implements KnightsFactory {
+public class HolyCastle implements KnightsFactory {
 
-    private boolean isHollyKnight;
+    private boolean isHolyKnight;
 
-    public HollyCastle(boolean isHollyKnight) {
-        this.isHollyKnight = isHollyKnight;
+    public HolyCastle(boolean isHolyKnight) {
+        this.isHolyKnight = isHolyKnight;
     }
 
     @Override
     public Knight createKnight() {
-        if(isHollyKnight) return usualHollyKnight();
-        return usualKnight();
+        if(isHolyKnight) return usualHolyKnight();
+        else return usualKnight();
     }
 
-    private Knight usualHollyKnight() {
-        return new HolyKnight("HollyKnight", 110, 15,0.5,0.3, 15);
+    private Knight usualHolyKnight() {
+        return new HolyKnight("HollyKnight", new YourHealth().returnGreatHealth(), new YourDamage().returnGreatDamage(), new YourArmor().returArmor(),0.3, 15);
     }
 }

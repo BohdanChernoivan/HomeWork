@@ -1,25 +1,27 @@
 package bohdan.homework.com.fightersFactory.dragonsLair;
 
-import bohdan.homework.com.fighters.base.abilities.ElementalFighter;
+
 import bohdan.homework.com.fighters.dragons.Dragon;
+import bohdan.homework.com.fightersFactory.randomСharacteristics.YourArmor;
+import bohdan.homework.com.fightersFactory.randomСharacteristics.YourDamage;
+import bohdan.homework.com.fightersFactory.randomСharacteristics.YourElement;
+import bohdan.homework.com.fightersFactory.randomСharacteristics.YourHealth;
 
-public class OneElementDragonsLair implements DragonsFactory {
+public class OneElementDragon implements DragonsFactory {
 
-    ElementalFighter elementalFighter;
-    boolean isGreat;
+    private boolean isOneElementDragon;
 
-    public OneElementDragonsLair(ElementalFighter elementalFighter, boolean isGreat) {
-        this.elementalFighter = elementalFighter;
-        this.isGreat = isGreat;
+    public OneElementDragon(boolean isOneElementDragon) {
+        this.isOneElementDragon = isOneElementDragon;
     }
 
     @Override
     public Dragon createDragon() {
-        return GreatDragon();
-//        if (isGreat)
+        if(isOneElementDragon) lowDragon();
+        return usualDragon();
     }
 
-    public Dragon GreatDragon() {
-        return new Dragon("Dragon", 100,20,0.5, elementalFighter.getElement());
+    private Dragon lowDragon() {
+        return new Dragon("Low Dragon", new YourHealth().returnGreatHealth(), new YourDamage().returnGreatDamage(), new YourArmor().returArmor(), new YourElement().randomOneElement());
     }
 }

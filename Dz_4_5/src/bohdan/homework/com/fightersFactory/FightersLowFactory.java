@@ -1,11 +1,10 @@
 package bohdan.homework.com.fightersFactory;
 
 import bohdan.homework.com.fighters.base.ArenaFighter;
-import bohdan.homework.com.fighters.dragons.Dragon;
-import bohdan.homework.com.fighters.vampires.TopVampire;
 import bohdan.homework.com.fightersFactory.dragonsLair.DragonsFactory;
 import bohdan.homework.com.fightersFactory.dragonsLair.OneElementDragon;
 import bohdan.homework.com.fightersFactory.elementNatural.ElementsFactory;
+import bohdan.homework.com.fightersFactory.elementNatural.GreatElement;
 import bohdan.homework.com.fightersFactory.knightsCaslte.DarkCastle;
 import bohdan.homework.com.fightersFactory.knightsCaslte.HolyCastle;
 import bohdan.homework.com.fightersFactory.knightsCaslte.KnightsFactory;
@@ -14,21 +13,22 @@ import bohdan.homework.com.fightersFactory.ridersSchool.RidersFactory;
 import bohdan.homework.com.fightersFactory.vampiresCemetery.GreatVampire;
 import bohdan.homework.com.fightersFactory.vampiresCemetery.VampiresFactory;
 
-public class FighersLowFactory implements FightersFactory {
+public class FightersLowFactory implements FightersFactory {
 
-    DragonsFactory dragonsFactory;
-    KnightsFactory knightsFactory;
-    RidersFactory ridersFactory;
-    VampiresFactory vampiresFactory;
-    ElementsFactory elementsFactory;
+    private DragonsFactory dragonsFactory;
+    private KnightsFactory knightsFactory;
+    private RidersFactory ridersFactory;
+    private VampiresFactory vampiresFactory;
+    private ElementsFactory elementsFactory;
 
-    Dragon dragon;
-    FighersLowFactory(){
+
+    FightersLowFactory(){
         dragonsFactory = new OneElementDragon(false);
-        knightsFactory = new HolyCastle(true);
-        knightsFactory = new DarkCastle(true);
-        ridersFactory = new RiderDragon(true);
-        vampiresFactory = new GreatVampire(true);
+        knightsFactory = new HolyCastle(false);
+        knightsFactory = new DarkCastle(false);
+        ridersFactory = new RiderDragon(false);
+        vampiresFactory = new GreatVampire(false);
+        elementsFactory = new GreatElement(false);
     }
 
     @Override
