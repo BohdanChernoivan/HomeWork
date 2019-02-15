@@ -1,5 +1,6 @@
 package bohdan.homework.com.arena;
 
+import bohdan.homework.com.anException.MyException;
 import bohdan.homework.com.fighters.base.actions.ActionPostFight;
 import bohdan.homework.com.fighters.base.actions.ActionPreFight;
 import bohdan.homework.com.fighters.base.actions.FightBreakAction;
@@ -70,12 +71,13 @@ public class Arena {
                         arenaFighterTwo.setReturnDamage(arenaFighterTwo.getFullDamage());
                         winner[0] = arenaFighterTwo;
                         return winner[0];
-                    }  else return null;
+                    }  else
+                        throw new MyException(arenaFighterOne,arenaFighterTwo);
                 }
             }
 
-        } catch (NullPointerException error) {
-            System.out.println("There is no winner");
+        } catch (MyException e) {
+            e.getWinner();
         }
         return winner[0];
     }
