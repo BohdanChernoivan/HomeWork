@@ -1,8 +1,8 @@
-package bohdan.homework.com.Fighters.Dragons;
+package bohdan.homework.com.fighters.dragons;
 
-import bohdan.homework.com.Fighters.Base.Abilities.ElementalFighter;
-import bohdan.homework.com.Fighters.Base.Actions.ActionPreFight;
-import bohdan.homework.com.Fighters.Base.ArenaFighter;
+import bohdan.homework.com.fighters.base.abilities.ElementalFighter;
+import bohdan.homework.com.fighters.base.actions.ActionPreFight;
+import bohdan.homework.com.fighters.base.ArenaFighter;
 
 public class Dragon extends ArenaFighter implements ElementalFighter, ActionPreFight {
 

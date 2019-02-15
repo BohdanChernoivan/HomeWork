@@ -1,9 +1,9 @@
-package bohdan.homework.com.Fighters.Riders;
+package bohdan.homework.com.fighters.riders;
 
 
-import bohdan.homework.com.Fighters.Base.Actions.FightBreakAction;
-import bohdan.homework.com.Fighters.Base.ArenaFighter;
-import bohdan.homework.com.Fighters.Dragons.Dragon;
+import bohdan.homework.com.fighters.base.actions.FightBreakAction;
+import bohdan.homework.com.fighters.base.ArenaFighter;
+import bohdan.homework.com.fighters.dragons.Dragon;
 
 
 
@@ -18,6 +18,7 @@ public class DragonRider extends ArenaFighter implements FightBreakAction {
     @Override
     public void actionWithFight(ArenaFighter arenaFighter, FightCallBack fightCallBack) {
         if (arenaFighter instanceof Dragon) {
+            System.out.println(this.getName() + " grab " + arenaFighter.getName());
             try {
             dragonPet = (Dragon) arenaFighter;
             setDamage(dragonPet.getDamage());

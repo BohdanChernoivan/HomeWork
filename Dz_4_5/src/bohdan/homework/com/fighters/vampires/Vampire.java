@@ -1,8 +1,8 @@
-package bohdan.homework.com.Fighters.Vampires;
+package bohdan.homework.com.fighters.vampires;
 
-import bohdan.homework.com.Fighters.Base.Actions.ReturnMyDamage;
-import bohdan.homework.com.Fighters.Base.Actions.ActionPreFight;
-import bohdan.homework.com.Fighters.Base.ArenaFighter;
+import bohdan.homework.com.fighters.base.actions.ReturnMyDamage;
+import bohdan.homework.com.fighters.base.actions.ActionPreFight;
+import bohdan.homework.com.fighters.base.ArenaFighter;
 
 public class Vampire extends ArenaFighter implements ActionPreFight, ReturnMyDamage {
 

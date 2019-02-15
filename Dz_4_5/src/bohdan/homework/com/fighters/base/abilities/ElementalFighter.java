@@ -1,4 +1,4 @@
-package bohdan.homework.com.Fighters.Base.Abilities;
+package bohdan.homework.com.fighters.base.abilities;
 
 
 public interface ElementalFighter {

@@ -1,4 +1,4 @@
-package bohdan.homework.com.Fighters.Base;
+package bohdan.homework.com.fighters.base;
 
 
 
