@@ -4,14 +4,13 @@ import bohdan.homework.com.fighters.base.ArenaFighter;
 
 public class MyException extends Exception {
 
-    ArenaFighter arenaFighter;
+    private ArenaFighter arenaFighter;
 
     public MyException(ArenaFighter arenaFighterOne, ArenaFighter arenaFighterTwo) {
         ArenaFighter winner;
-        double win = Math.random();
-        if(0.5 > win) { winner = arenaFighterOne;}
+        if(0.5 > Math.random()) { winner = arenaFighterOne;}
         else winner = arenaFighterTwo;
-        arenaFighter = winner;
+        this.arenaFighter = winner;
     }
 
     public ArenaFighter getWinner() {

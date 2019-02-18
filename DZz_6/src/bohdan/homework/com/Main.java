@@ -32,10 +32,10 @@ public class Main {
         ArenaFighter fighters[] = {dragon, knight, holyKnight, darkKnight, dragonRider, vampire, topVampire, elemental};
         tourney.setPvp(fighters);
 
-//        arena.fight(elemental,holyKnight);
-//        arena.fight(topVampire,dragonRider);
-//        arena.fight(dragon,dragonRider);
-//        arena.fight(topVampire,vampire);
+        arena.fight(elemental,holyKnight);
+        arena.fight(topVampire,dragonRider);
+        arena.fight(dragon,dragonRider);
+        arena.fight(topVampire,vampire);
 
     }
 }
