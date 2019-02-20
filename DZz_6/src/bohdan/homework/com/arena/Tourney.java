@@ -4,24 +4,30 @@ import bohdan.homework.com.fighters.base.ArenaFighter;
 
 public class Tourney extends Arena {
 
-
+    //display only fighters
     Arena arena = new Arena();
-    ArenaFighter[] fighters = new ArenaFighter[8]; //TODO: class not over
+    private ArenaFighter[] fighters = new ArenaFighter[8];
 
 
     public void setPvp(ArenaFighter[] tourney) {
 
-        System.out.println("First tourney");
-
-        for (int i = 0; i < fighters.length; i++) {
-            fighters[i] = tourney[i];
-            System.out.println(fighters[i].getName());
-//            for (int j = 0; j < fighters.length / 2; j++) {
-//                fighters[i] = tourney[i];
-//            }
+        System.out.println("Fighters:");
+        try {
+            for (int i = 0; i < fighters.length; i++) {
+                fighters[i] = tourney[i];
+                System.out.println("[" + (i + 1) + "]" + fighters[i].getName());
+            }
+            throw new IndexOutOfBoundsException();
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Full fighters");
         }
     }
 }
+
+//            for (int j = 0; j < fighters.length / 2; j++) {
+//                fighters[i] = tourney[i];
+//            }
+
 
 //        try {
 //
