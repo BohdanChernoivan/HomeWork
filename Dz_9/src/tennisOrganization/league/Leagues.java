@@ -1,12 +1,19 @@
 package tennisOrganization.league;
 
+import tennisOrganization.managerOrganization.ArrayPlayers;
+import tennisOrganization.players.Player;
+
+import java.util.ArrayList;
+
 public class Leagues {
     private String name;
     private int points;
+    ArrayList<ArrayPlayers<Player>> arrayPlayers;
 
-    public Leagues(String name, int points) {
+    public Leagues(String name, int points, ArrayList<ArrayPlayers<Player>> arrayPlayers) {
         this.name = name;
         this.points = points;
+        this.arrayPlayers = arrayPlayers;
     }
 
     public String getName() {
@@ -23,5 +30,9 @@ public class Leagues {
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    public ArrayList<ArrayPlayers<Player>> getArrayPlayers() {
+        return arrayPlayers;
     }
 }

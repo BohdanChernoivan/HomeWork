@@ -1,8 +1,8 @@
 import tennisOrganization.league.LeagueFactory;
 import tennisOrganization.league.LeagueType;
-import tennisOrganization.league.type.Bronze;
+import tennisOrganization.league.type.Gold;
 import tennisOrganization.play.Match;
-import tennisOrganization.players.Player;
+import tennisOrganization.tourney.Tourney;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,13 +10,9 @@ public class Main {
 
         LeagueFactory leagueFactory = new LeagueFactory();
         Match match = new Match();
-//TODO: Test
-        System.out.println(leagueFactory.findLeagues(LeagueType.Bronze).getName());
-        match.OneVsOne(new Player(),new Player(),leagueFactory.findLeagues(LeagueType.Bronze).getPoints());
-        System.out.println(leagueFactory.findLeagues(LeagueType.Silver).getName());
-        match.OneVsOne(new Player(),new Player(),leagueFactory.findLeagues(LeagueType.Silver).getPoints());
-        System.out.println(leagueFactory.findLeagues(LeagueType.Gold).getName());
-        match.OneVsOne(new Player(),new Player(),leagueFactory.findLeagues(LeagueType.Gold).getPoints());
+        Tourney tourney = new Tourney();
 
+        tourney.startTourney();
+//        match.OneVsOne(leagueFactory.findLeagues(LeagueType.Bronze).getArrayPlayers().get(1).getPlayer(), leagueFactory.findLeagues(LeagueType.Bronze).getArrayPlayers().get(2).getPlayer(), leagueFactory.findLeagues(LeagueType.Bronze).getPoints());
     }
 }

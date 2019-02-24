@@ -28,23 +28,14 @@ public class PlayersLeague {
         return goldPlayers;
     }
 
-    public void setGoldPlayers(ArrayList<ArrayPlayers<Player>> goldPlayers) {
-        this.goldPlayers = goldPlayers;
-    }
 
     public ArrayList<ArrayPlayers<Player>> getSilverPlayers() {
         return silverPlayers;
     }
 
-    public void setSilverPlayers(ArrayList<ArrayPlayers<Player>> silverPlayers) {
-        this.silverPlayers = silverPlayers;
-    }
 
     public ArrayList<ArrayPlayers<Player>> getBronzePlayers() {
         return bronzePlayers;
     }
 
-    public void setBronzePlayers(ArrayList<ArrayPlayers<Player>> bronzePlayers) {
-        this.bronzePlayers = bronzePlayers;
-    }
 }

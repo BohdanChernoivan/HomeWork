@@ -1,10 +1,14 @@
 package tennisOrganization.tourney;
 
+import tennisOrganization.league.LeagueFactory;
+import tennisOrganization.league.LeagueType;
 import tennisOrganization.league.type.Bronze;
 import tennisOrganization.league.type.Gold;
 import tennisOrganization.league.type.Silver;
 import tennisOrganization.play.Match;
 import tennisOrganization.players.Player;
+
+import java.util.ArrayList;
 
 
 public class Tourney {
@@ -14,15 +18,19 @@ public class Tourney {
     Gold gold = new Gold();
     Silver silver = new Silver();
     Bronze bronze = new Bronze();
+    LeagueFactory leagueFactory = new LeagueFactory();
 
 
 
     public void startTourney() {
 
-        try {
 
-        } catch (Exception exp) {}
 
+        for (int i = 0; i < 16 ; i++) {
+            match.OneVsOne(leagueFactory.findLeagues(LeagueType.Bronze).getArrayPlayers().get(i).getPlayer(),leagueFactory.findLeagues(LeagueType.Bronze).getArrayPlayers().iterator().next().getPlayer(), leagueFactory.findLeagues(LeagueType.Bronze).getPoints());
+            match.OneVsOne(leagueFactory.findLeagues(LeagueType.Silver).getArrayPlayers().get(i).getPlayer(),leagueFactory.findLeagues(LeagueType.Silver).getArrayPlayers().iterator().next().getPlayer(), leagueFactory.findLeagues(LeagueType.Silver).getPoints());
+            match.OneVsOne(leagueFactory.findLeagues(LeagueType.Gold).getArrayPlayers().get(i).getPlayer(),leagueFactory.findLeagues(LeagueType.Gold).getArrayPlayers().iterator().next().getPlayer(), leagueFactory.findLeagues(LeagueType.Gold).getPoints());
+        }
     }
 
     private void pvpTourney(Player one, Player two,String nameLeague, int league) {
