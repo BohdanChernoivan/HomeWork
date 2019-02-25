@@ -1,29 +1,29 @@
-import tennisOrganization.league.LeagueFactory;
+
 import tennisOrganization.league.LeagueType;
-import tennisOrganization.play.Match;
+import tennisOrganization.tourney.Totals;
 import tennisOrganization.tourney.Tourney;
+
 
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("Start tennis tourney");
 
-        LeagueFactory leagueFactory = new LeagueFactory();
-        Match match = new Match();
         Tourney tourney = new Tourney();
+        Totals totals = new Totals();
 
-        tourney.startTourney();
-        tourney.startTourney();
+        tourney.gameTourney();
+        tourney.gameTourney();
+        tourney.gameTourney();
         tourney.transition();
-        tourney.startTourney();
-        tourney.startTourney();
+        tourney.gameTourney();
+        tourney.gameTourney();
+        tourney.gameTourney();
         tourney.transition();
-        tourney.startTourney();
-        tourney.startTourney();
+        tourney.gameTourney();
+        tourney.gameTourney();
+        tourney.gameTourney();
 
-        System.out.println(tourney.getLeagueFactory().findLeagues(LeagueType.Bronze).getArrayPlayers().size());
-        System.out.println(tourney.getLeagueFactory().findLeagues(LeagueType.Silver).getArrayPlayers().size());
-        System.out.println(tourney.getLeagueFactory().findLeagues(LeagueType.Gold).getArrayPlayers().size());
-
+        totals.results(tourney);
     }
 }
