@@ -10,11 +10,11 @@ import java.util.ArrayList;
 
 public class Tourney {
 
-    Match match = new Match();
+    private Match match = new Match();
 
     LeagueFactory leagueFactory = new LeagueFactory();
 
-    ArrayList<ArrayPlayers<Player>> playersAll = new ArrayList<>();
+    private ArrayList<ArrayPlayers<Player>> playersAll = new ArrayList<>();
 
 
     public void gameTourney() {
@@ -62,20 +62,21 @@ public class Tourney {
      */
     private void replaceLeague(ArrayPlayers<Player> one, ArrayList<ArrayPlayers<Player>> arrayListOne, ArrayList<ArrayPlayers<Player>> arrayListTwo) {
         arrayListOne.add(one);
+        one.getPlayer().setLeague(arrayListOne.get(0).getPlayer().getLeague());
         arrayListTwo.remove(one);
     }
 
-    public LeagueFactory getLeagueFactory() {
+    protected LeagueFactory getLeagueFactory() {
         return leagueFactory;
     }
 
-    public ArrayList<ArrayPlayers<Player>> getPlayersAll() {
+    protected ArrayList<ArrayPlayers<Player>> getPlayersAll() {
         return playersAll;
     }
 
-    public void setPlayersAll() {
-        playersAll.addAll(leagueFactory.findLeagues(LeagueType.Bronze).getArrayPlayers());
-        playersAll.addAll(leagueFactory.findLeagues(LeagueType.Silver).getArrayPlayers());
+    protected void setPlayersAll() {
         playersAll.addAll(leagueFactory.findLeagues(LeagueType.Gold).getArrayPlayers());
+        playersAll.addAll(leagueFactory.findLeagues(LeagueType.Silver).getArrayPlayers());
+        playersAll.addAll(leagueFactory.findLeagues(LeagueType.Bronze).getArrayPlayers());
     }
 }

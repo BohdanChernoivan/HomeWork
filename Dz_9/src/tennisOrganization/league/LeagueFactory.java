@@ -11,7 +11,7 @@ public class LeagueFactory {
     private Gold gold = new Gold();
     private Silver silver = new Silver();
     private Bronze bronze = new Bronze();
-    private PlayersLeague playersLeague = new PlayersLeague();
+    PlayersLeague playersLeague = new PlayersLeague();
 
     public Leagues findLeagues(LeagueType leagueType) {
         switch (leagueType) {
