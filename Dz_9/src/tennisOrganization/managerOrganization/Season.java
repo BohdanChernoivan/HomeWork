@@ -21,8 +21,10 @@ public class Season {
         tourney.gameTourney();
         tourney.gameTourney();
         tourney.gameTourney();
+        tourney.transition();
 
 
-        totals.results(tourney);
+
+        totals.printResults(tourney);
     }
 }

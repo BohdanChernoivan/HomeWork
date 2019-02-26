@@ -7,12 +7,11 @@ public class Player {
     private int skillPlayTennis;
     private String league;
 
-    public Player() {
+    public Player(String league) {
         this.name = new Generation().getName();
         this.age = new Generation().getAge();
         this.skillPlayTennis = new Generation().getSkillPlay();
-        this.point = this.getPoint();
-        this.league = this.getLeague();
+        this.league = league;
     }
 
     public String getName() {

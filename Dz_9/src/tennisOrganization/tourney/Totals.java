@@ -12,11 +12,11 @@ import java.util.LinkedList;
 
 public class Totals {
 
-    private Player player = new Player();
+    private Player player;
 
-    LinkedList<ArrayPlayers<Player>> playersLinkedList = new LinkedList<>();
+    private LinkedList<ArrayPlayers<Player>> playersLinkedList = new LinkedList<>();
 
-    public void results(Tourney tourney) {
+    public void printResults(Tourney tourney) {
 
         tourney.transition();
         System.out.println("---------------------------------------");

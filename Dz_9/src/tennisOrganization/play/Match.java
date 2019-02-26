@@ -10,7 +10,7 @@ import java.util.Random;
 public class Match {
 
 
-    public void OneVsOne(Player one, Player two, int points, String league) {
+    public static void OneVsOne(Player one, Player two, int points, String league) {
         System.out.println(one.getName() + " vs " + two.getName());
         try {
             if (one.getSkillPlayTennis() > two.getSkillPlayTennis()) {
@@ -27,14 +27,14 @@ public class Match {
 
     }
 
-    private void OneWinner(Player one, Player two, int pointsWin, String league) {
+    private static void OneWinner(Player one, Player two, int pointsWin, String league) {
         System.out.println("Game in " + league + " league!");
         one.setPoint(one.getPoint() + pointsWin);
         two.setPoint(two.getPoint() - pointsWin);
         System.out.println("Winner = " + one.getName() + " get = " + one.getPoint() + " point(s).");
     }
 
-    private void draw(Player one, Player two, int pointsWin, String league) {
+    private static void draw(Player one, Player two, int pointsWin, String league) {
         boolean randomWinner = new Random().nextBoolean();
         if (randomWinner) {
             System.out.println("Game in " + league + " league!");

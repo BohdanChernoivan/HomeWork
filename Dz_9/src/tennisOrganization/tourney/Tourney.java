@@ -2,6 +2,9 @@ package tennisOrganization.tourney;
 
 import tennisOrganization.league.LeagueFactory;
 import tennisOrganization.league.LeagueType;
+import tennisOrganization.league.type.Bronze;
+import tennisOrganization.league.type.Gold;
+import tennisOrganization.league.type.Silver;
 import tennisOrganization.managerOrganization.ArrayPlayers;
 import tennisOrganization.play.Match;
 import tennisOrganization.players.Player;
@@ -19,39 +22,57 @@ public class Tourney {
 
     public void gameTourney() {
 
-        for (int i = 0; i < leagueFactory.findLeagues(LeagueType.Bronze).getArrayPlayers().size(); i++) {
-                match.OneVsOne(leagueFactory.findLeagues(LeagueType.Bronze).getArrayPlayers().get(i).getPlayer(), leagueFactory.findLeagues(LeagueType.Bronze).getArrayPlayers().listIterator(leagueFactory.findLeagues(LeagueType.Bronze).getArrayPlayers().size() - i).previous().getPlayer(), leagueFactory.findLeagues(LeagueType.Bronze).getPoints(), leagueFactory.findLeagues(LeagueType.Bronze).getName());
+        for (int i = 0; i < listBronzePlayers().size(); i++) {
+                match.OneVsOne(listBronzePlayers().get(i).getPlayer(), listBronzePlayers().listIterator(listBronzePlayers().size() - i).previous().getPlayer(), new Bronze().getPoints(), new Bronze().getName());
         }
 
-        for (int i = 0; i < leagueFactory.findLeagues(LeagueType.Silver).getArrayPlayers().size(); i++) {
-                match.OneVsOne(leagueFactory.findLeagues(LeagueType.Silver).getArrayPlayers().get(i).getPlayer(), leagueFactory.findLeagues(LeagueType.Silver).getArrayPlayers().listIterator(leagueFactory.findLeagues(LeagueType.Silver).getArrayPlayers().size() - i).previous().getPlayer(), leagueFactory.findLeagues(LeagueType.Silver).getPoints(), leagueFactory.findLeagues(LeagueType.Silver).getName());
+        for (int i = 0; i < listSilverPlayers().size(); i++) {
+                match.OneVsOne(listSilverPlayers().get(i).getPlayer(), listSilverPlayers().listIterator(listSilverPlayers().size() - i).previous().getPlayer(), new Silver().getPoints(), new Silver().getName());
         }
 
-        for (int i = 0; i < leagueFactory.findLeagues(LeagueType.Gold).getArrayPlayers().size(); i++) {
-                match.OneVsOne(leagueFactory.findLeagues(LeagueType.Gold).getArrayPlayers().get(i).getPlayer(), leagueFactory.findLeagues(LeagueType.Gold).getArrayPlayers().listIterator(leagueFactory.findLeagues(LeagueType.Gold).getArrayPlayers().size() - i).previous().getPlayer(), leagueFactory.findLeagues(LeagueType.Gold).getPoints(), leagueFactory.findLeagues(LeagueType.Gold).getName());
+        for (int i = 0; i < listGoldPlayers().size(); i++) {
+                match.OneVsOne(listGoldPlayers().get(i).getPlayer(), listGoldPlayers().listIterator(listGoldPlayers().size() - i).previous().getPlayer(), new Gold().getPoints(), new Gold().getName());
         }
     }
 
     public void transition() {
 
-        for (int i = 0; i < leagueFactory.findLeagues(LeagueType.Gold).getArrayPlayers().size(); i++) {
-            if (leagueFactory.findLeagues(LeagueType.Gold).getArrayPlayers().get(i).getPlayer().getPoint() < 50) {
-                replaceLeague(leagueFactory.findLeagues(LeagueType.Gold).getArrayPlayers().get(i), leagueFactory.findLeagues(LeagueType.Silver).getArrayPlayers(), leagueFactory.findLeagues(LeagueType.Gold).getArrayPlayers());
+        for (int i = 0; i < listBronzePlayers().size(); i++) {
+            if (listBronzePlayers().get(i).getPlayer().getPoint() > 30) {
+                replaceLeague(listBronzePlayers().get(i), listSilverPlayers(), listBronzePlayers());
             }
         }
-            for (int i = 0; i < leagueFactory.findLeagues(LeagueType.Silver).getArrayPlayers().size(); i++) {
-            if (leagueFactory.findLeagues(LeagueType.Silver).getArrayPlayers().get(i).getPlayer().getPoint() > 50) {
-                replaceLeague(leagueFactory.findLeagues(LeagueType.Silver).getArrayPlayers().get(i), leagueFactory.findLeagues(LeagueType.Gold).getArrayPlayers(), leagueFactory.findLeagues(LeagueType.Silver).getArrayPlayers());
-            }
-            if(leagueFactory.findLeagues(LeagueType.Silver).getArrayPlayers().get(i).getPlayer().getPoint() < 20){
-                replaceLeague(leagueFactory.findLeagues(LeagueType.Silver).getArrayPlayers().get(i), leagueFactory.findLeagues(LeagueType.Bronze).getArrayPlayers(), leagueFactory.findLeagues(LeagueType.Silver).getArrayPlayers());
+
+        for (int i = 0; i < listSilverPlayers().size(); i++) {
+            if (listSilverPlayers().get(i).getPlayer().getPoint() > 70) {
+                replaceLeague(listSilverPlayers().get(i), listGoldPlayers(), listSilverPlayers());
             }
         }
-        for (int i = 0; i < leagueFactory.findLeagues(LeagueType.Bronze).getArrayPlayers().size(); i++) {
-            if (leagueFactory.findLeagues(LeagueType.Bronze).getArrayPlayers().get(i).getPlayer().getPoint() > 20) {
-                replaceLeague(leagueFactory.findLeagues(LeagueType.Bronze).getArrayPlayers().get(i), leagueFactory.findLeagues(LeagueType.Silver).getArrayPlayers(), leagueFactory.findLeagues(LeagueType.Bronze).getArrayPlayers());
+
+        for (int i = 0; i < listSilverPlayers().size(); i++) {
+            if(listSilverPlayers().get(i).getPlayer().getPoint() < 30){
+                replaceLeague(listSilverPlayers().get(i), listBronzePlayers(), listSilverPlayers());
             }
         }
+
+        for (int i = 0; i < listGoldPlayers().size(); i++) {
+            if (listGoldPlayers().get(i).getPlayer().getPoint() < 70) {
+                replaceLeague(listGoldPlayers().get(i), listSilverPlayers(), listGoldPlayers());
+            }
+        }
+    }
+
+
+    public ArrayList<ArrayPlayers<Player>> listGoldPlayers() {
+        return leagueFactory.findLeagues(LeagueType.Gold).getArrayPlayers();
+    }
+
+    public ArrayList<ArrayPlayers<Player>> listSilverPlayers() {
+        return leagueFactory.findLeagues(LeagueType.Silver).getArrayPlayers();
+    }
+
+    public ArrayList<ArrayPlayers<Player>> listBronzePlayers() {
+        return leagueFactory.findLeagues(LeagueType.Bronze).getArrayPlayers();
     }
 
     /**
@@ -75,8 +96,8 @@ public class Tourney {
     }
 
     protected void setPlayersAll() {
-        playersAll.addAll(leagueFactory.findLeagues(LeagueType.Gold).getArrayPlayers());
-        playersAll.addAll(leagueFactory.findLeagues(LeagueType.Silver).getArrayPlayers());
-        playersAll.addAll(leagueFactory.findLeagues(LeagueType.Bronze).getArrayPlayers());
+        playersAll.addAll(listGoldPlayers());
+        playersAll.addAll(listSilverPlayers());
+        playersAll.addAll(listBronzePlayers());
     }
 }

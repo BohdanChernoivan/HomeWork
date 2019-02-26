@@ -10,22 +10,19 @@ import java.util.ArrayList;
 public class PlayersLeague {
 
 
-    ArrayList<ArrayPlayers<Player>> goldPlayers = new ArrayList(16);
-    ArrayList<ArrayPlayers<Player>> silverPlayers = new ArrayList(16);
-    ArrayList<ArrayPlayers<Player>> bronzePlayers = new ArrayList(16);
+    private ArrayList<ArrayPlayers<Player>> goldPlayers = new ArrayList();
+    private ArrayList<ArrayPlayers<Player>> silverPlayers = new ArrayList();
+    private ArrayList<ArrayPlayers<Player>> bronzePlayers = new ArrayList();
 
     public PlayersLeague() {
         for (int i = 0; i < 16; i++) {
-            goldPlayers.add(new ArrayPlayers<>(new Player()));
-            goldPlayers.get(i).getPlayer().setLeague(new Gold().getName());
+            goldPlayers.add(new ArrayPlayers<>(new Player(new Gold().getName())));
         }
         for (int i = 0; i < 16; i++) {
-            silverPlayers.add(new ArrayPlayers<>(new Player()));
-            silverPlayers.get(i).getPlayer().setLeague(new Silver().getName());
+            silverPlayers.add(new ArrayPlayers<>(new Player(new Silver().getName())));
         }
         for (int i = 0; i < 16; i++) {
-            bronzePlayers.add(new ArrayPlayers<>(new Player()));
-            bronzePlayers.get(i).getPlayer().setLeague(new Bronze().getName());
+            bronzePlayers.add(new ArrayPlayers<>(new Player(new Bronze().getName())));
         }
     }
 
