@@ -1,15 +1,19 @@
 package tennisOrganization.play;
 
-import tennisOrganization.managerOrganization.ArrayPlayers;
-import tennisOrganization.players.Player;
+import tennisOrganization.tourney.Tourney;
 
-import java.util.ArrayList;
 
 public class GameStatistic {
 
-    // don't did method
-    public void statisticOneGame(ArrayList<ArrayPlayers<Player>> players) {
+    public void statisticGamesLeagueBronze(Tourney tourney) {
+        tourney.gamesBronzeLeague();
+    }
 
-        players.size();
+    public void statisticGamesLeagueSilver(Tourney tourney) {
+        tourney.gamesSilverLeague();
+    }
+
+    public void statisticGamesLeagueGold(Tourney tourney) {
+        tourney.gamesGoldLeague();
     }
 }

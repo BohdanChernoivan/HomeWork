@@ -1,5 +1,6 @@
 package tennisOrganization.managerOrganization;
 
+import tennisOrganization.play.GameStatistic;
 import tennisOrganization.tourney.Totals;
 import tennisOrganization.tourney.Tourney;
 

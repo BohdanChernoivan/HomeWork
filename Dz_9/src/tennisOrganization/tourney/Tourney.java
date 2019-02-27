@@ -20,19 +20,15 @@ public class Tourney {
     private ArrayList<ArrayPlayers<Player>> playersAll = new ArrayList<>();
 
 
+
     public void gameTourney() {
 
-        for (int i = 0; i < listBronzePlayers().size(); i++) {
-                match.OneVsOne(listBronzePlayers().get(i).getPlayer(), listBronzePlayers().listIterator(listBronzePlayers().size() - i).previous().getPlayer(), new Bronze().getPoints(), new Bronze().getName());
-        }
+        gamesBronzeLeague();
 
-        for (int i = 0; i < listSilverPlayers().size(); i++) {
-                match.OneVsOne(listSilverPlayers().get(i).getPlayer(), listSilverPlayers().listIterator(listSilverPlayers().size() - i).previous().getPlayer(), new Silver().getPoints(), new Silver().getName());
-        }
+        gamesSilverLeague();
 
-        for (int i = 0; i < listGoldPlayers().size(); i++) {
-                match.OneVsOne(listGoldPlayers().get(i).getPlayer(), listGoldPlayers().listIterator(listGoldPlayers().size() - i).previous().getPlayer(), new Gold().getPoints(), new Gold().getName());
-        }
+        gamesGoldLeague();
+
     }
 
     public void transition() {
@@ -99,5 +95,23 @@ public class Tourney {
         playersAll.addAll(listGoldPlayers());
         playersAll.addAll(listSilverPlayers());
         playersAll.addAll(listBronzePlayers());
+    }
+
+
+
+    public void gamesBronzeLeague() {
+        for (int i = 0; i < listBronzePlayers().size(); i++) {
+            match.OneVsOne(listBronzePlayers().get(i).getPlayer(), listBronzePlayers().listIterator(listBronzePlayers().size() - i).previous().getPlayer(), new Bronze());
+        }
+    }
+    public void gamesSilverLeague() {
+        for (int i = 0; i < listSilverPlayers().size(); i++) {
+            match.OneVsOne(listSilverPlayers().get(i).getPlayer(), listSilverPlayers().listIterator(listSilverPlayers().size() - i).previous().getPlayer(), new Silver());
+        }
+    }
+    public void gamesGoldLeague() {
+        for (int i = 0; i < listGoldPlayers().size(); i++) {
+            match.OneVsOne(listGoldPlayers().get(i).getPlayer(), listGoldPlayers().listIterator(listGoldPlayers().size() - i).previous().getPlayer(), new Gold());
+        }
     }
 }

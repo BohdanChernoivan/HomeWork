@@ -1,15 +1,18 @@
 package tennisOrganization.league.type;
 
 
-public class Silver {
-    private final int points = 5;
-    private final String name = "Silver";
+public class Silver extends AbstractLeague{
 
-    public int getPoints() {
-        return points;
-    }
+    private int points = 5;
+    private String name = "Silver";
 
+    @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public int getPoints() {
+        return points;
     }
 }
