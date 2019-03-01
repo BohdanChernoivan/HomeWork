@@ -47,5 +47,7 @@ public class Main {
 
         tree.check(tree.node, 31);
         tree.check(tree.node, 17);
+
+        tree.printElements(tree.node);
     }
 }

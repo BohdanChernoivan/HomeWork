@@ -23,6 +23,7 @@ public class TreeRedBlack {
             node = new Node(value);
             return node;
         }
+
         if (value > node.value) {
             node.right = addValue(node.right, value);
         } else {
@@ -43,17 +44,19 @@ public class TreeRedBlack {
             System.out.println("Found = " + node.value + " in this tree");
             return node;
         }
-        if (value > node.value) {
-            return check(node.right, value);
-        } else {
-            return check(node.left, value);
-        }
+        return value > node.value
+                ? check(node.right, value)
+                : check(node.left, value);
 
     }
 
-//    public Node balance(Node node) {
-//
-//        if (node);
-//    }
+    public void printElements(Node node) {
+
+       if(node != null) {
+           System.out.print(" " + node.value);
+           printElements(node.left);
+           printElements(node.right);
+       }
+    }
 
 }
