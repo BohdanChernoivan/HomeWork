@@ -59,4 +59,42 @@ public class TreeRedBlack {
        }
     }
 
+
+    public Node shiftLeft(Node node) {
+
+        Node node1 = node.right;
+        node.right = node1.left;
+        node1.left = node;
+        this.node = node1;
+        return node1;
+
+    }
+
+    public Node shiftRight(Node node) {
+
+        Node node1 = node.left;
+        node.left = node1.right;
+        node1.right = node;
+        this.node = node1;
+        return node1;
+
+    }
+
+    public boolean checkBalance(Node node) {
+
+        if (node.left != null) {
+            if (node.value > node.left.value) {
+                checkBalance(node.left);
+            }
+            else return false;
+
+        }
+        if (node.right != null) {
+            if (node.value < node.right.value) {
+                checkBalance(node.right);
+            }
+            else return false;
+        }
+        return true;
+    }
 }
