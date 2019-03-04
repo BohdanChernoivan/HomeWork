@@ -1,6 +1,6 @@
 import sorting.BubbleSort;
 import sorting.QuickSort;
-import tree.TreeRedBlack;
+import tree.MyTree;
 
 public class Main {
     public static void main(String[] args) {
@@ -34,31 +34,22 @@ public class Main {
         System.out.println("Tree:");
         System.out.println();
 
-        TreeRedBlack tree = new TreeRedBlack();
+        MyTree tree = new MyTree();
 
-        tree.add(21);
-        tree.add(16);
-        tree.add(29);
+        tree.add(12);
+        tree.add(8);
+        tree.add(10);
         tree.add(11);
-        tree.add(17);
-        tree.add(27);
-        tree.add(31);
+        tree.add(7);
+        tree.add(15);
+        tree.add(14);
+        tree.add(4);
 
-
-        tree.check(tree.node, 31);
-        tree.check(tree.node, 17);
-
-
-        tree.printElements(tree.node);
-        tree.shiftRight(tree.node);
-//        tree.shiftLeft(tree.node);
-
+        tree.printValues(tree.node);
         System.out.println();
 
-        tree.printElements(tree.node);
-        System.out.println();
-
-        System.out.println("Balance = " + tree.checkBalance(tree.node));
+        tree.check(tree.node, 11);
+        tree.check(tree.node, 9);
 
     }
 }
