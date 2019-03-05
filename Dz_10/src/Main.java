@@ -51,5 +51,7 @@ public class Main {
         tree.check(tree.node, 11);
         tree.check(tree.node, 9);
 
+        System.out.println("Balance tree = " + tree.checkBalance(tree.node));
+
     }
 }

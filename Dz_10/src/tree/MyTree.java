@@ -124,4 +124,22 @@ public class MyTree {
             printValues(myTree.right);
         }
     }
+
+    public boolean checkBalance(Node node) {
+
+        if (node.left != null) {
+            if (node.value >= node.left.value) {
+                checkBalance(node.left);
+            }
+            else return false;
+
+        }
+        if (node.right != null) {
+            if (node.value <= node.right.value) {
+                checkBalance(node.right);
+            }
+            else return false;
+        }
+        return true;
+    }
 }
