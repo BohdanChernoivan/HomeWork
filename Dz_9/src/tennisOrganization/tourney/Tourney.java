@@ -11,7 +11,8 @@ import tennisOrganization.players.Player;
 
 import java.util.ArrayList;
 
-public class Tourney {
+public class Tourney{
+
 
     private Match match = new Match();
 
@@ -21,13 +22,18 @@ public class Tourney {
 
 
 
-    public void gameTourney() {
 
-        gamesBronzeLeague();
+    public void gameTourney() throws InterruptedException {
+        Thread thread = new Thread(new gameBronze());
+        Thread thread1 = new Thread(new gameSilver());
+        Thread thread2 = new Thread(new gameGold());
 
-        gamesSilverLeague();
-
-        gamesGoldLeague();
+        thread.start();
+        thread.join();
+        thread1.start();
+        thread1.join();
+        thread2.start();
+        thread2.join();
 
     }
 
@@ -98,6 +104,27 @@ public class Tourney {
     }
 
 
+
+    public class gameBronze extends Thread {
+        @Override
+        public final void run() {
+            gamesBronzeLeague();
+        }
+    }
+
+    protected class gameSilver extends Thread {
+        @Override
+        public final void run() {
+            gamesSilverLeague();
+        }
+    }
+
+    protected class gameGold extends Thread {
+        @Override
+        public final void run() {
+            gamesGoldLeague();
+        }
+    }
 
     public void gamesBronzeLeague() {
         for (int i = 0; i < listBronzePlayers().size(); i++) {

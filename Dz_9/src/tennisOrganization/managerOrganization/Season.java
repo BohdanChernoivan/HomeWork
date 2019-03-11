@@ -1,13 +1,12 @@
 package tennisOrganization.managerOrganization;
 
-import tennisOrganization.play.GameStatistic;
 import tennisOrganization.tourney.Totals;
 import tennisOrganization.tourney.Tourney;
 
 public class Season {
 
 
-    public void season() {
+    public void season() throws InterruptedException {
         Tourney tourney = new Tourney();
         Totals totals = new Totals();
 

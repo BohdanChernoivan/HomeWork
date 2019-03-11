@@ -34,6 +34,7 @@ public class Generation {
         int skill = random.nextInt(100);
         return skill;
     }
+
 }
 
 
